@@ -3,6 +3,8 @@ public class Producto {
     private String nombreProducto;
     private String maracaProducto;
     private String modeloProdcuto;
+    private int tipoIva;
+    private Double precioProducto;
 
     @Override
     public String toString() {
@@ -11,11 +13,20 @@ public class Producto {
                 ", nombreProducto='" + nombreProducto + '\'' +
                 ", maracaProducto='" + maracaProducto + '\'' +
                 ", modeloProdcuto='" + modeloProdcuto + '\'' +
+                ", tipoIva=" + tipoIva +
                 ", precioProducto=" + precioProducto +
                 '}';
     }
 
-    private Double precioProducto;
+
+
+    public int getTipoIva() {
+        return tipoIva;
+    }
+
+    public void setTipoIva(int tipoIva) {
+        this.tipoIva = tipoIva;
+    }
 
     public Integer getCodigoProducto() {
         return codigoProducto;

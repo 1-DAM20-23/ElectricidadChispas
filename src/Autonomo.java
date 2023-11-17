@@ -3,14 +3,7 @@ public class Autonomo extends Cliente {
     private String apellidos;
     private String dni;
 
-    @Override
-    public String toString() {
-        return "Autonomo{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", dni='" + dni + '\'' +
-                '}';
-    }
+
 
     public String getNombre() {
         return nombre;
@@ -34,5 +27,22 @@ public class Autonomo extends Cliente {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    @Override
+    public String toString() {
+        return "Autonomo{" +
+                "codgioCliente=" + codgioCliente +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", dni='" + dni + '\'' +
+                ", codgioCliente=" + codgioCliente +
+                ", direccionPostal='" + direccionPostal + '\'' +
+                ", poblacion='" + poblacion + '\'' +
+                ", provincia='" + provincia + '\'' +
+                ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+
+                '}';
     }
 }

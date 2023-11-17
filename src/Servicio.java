@@ -2,6 +2,7 @@ public class Servicio {
     private Integer codigoServicio;
     private String nombreServicio;
     private Double precioServicio;
+    private int tipoIva;
 
     @Override
     public String toString() {
@@ -37,13 +38,13 @@ public class Servicio {
         this.precioServicio = precioServicio;
     }
 
-    public Double getTipoIva() {
+    public int getTipoIva() {
         return tipoIva;
     }
 
-    public void setTipoIva(Double tipoIva) {
+    public void setTipoIva(int tipoIva) {
         this.tipoIva = tipoIva;
     }
 
-    private Double tipoIva;
+
 }

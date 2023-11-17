@@ -1,8 +1,8 @@
 public class Cliente {
-    private Integer codgioCliente;
-    private  String direccionPostal;
-    private String poblacion;
-    private String provincia;
+     protected Integer codgioCliente;
+    protected String direccionPostal;
+    protected String poblacion;
+    protected String provincia;
 
     @Override
     public String toString() {
@@ -15,6 +15,12 @@ public class Cliente {
                 ", telefono='" + telefono + '\'' +
                 '}';
     }
+
+    protected String email;
+    protected String telefono;
+
+
+
 
     public Integer getCodgioCliente() {
         return codgioCliente;
@@ -64,6 +70,4 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    private String email;
-    private String telefono;
 }
