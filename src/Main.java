@@ -2,17 +2,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner scnTeclado;
+    //VARIABLES
+    public static Scanner scnTeclado;
+    public static int opcion = 0;
+    public static String dato;
+    public static int posicion;
+    public static int codigoCliente=0;
+    //BBDD
+    public static ArrayList<Cliente> listaClientes = new ArrayList<>();
+    public static ArrayList<Factura> listaFacturas = new ArrayList<>();
+    public static ArrayList<Producto> listaProductos = new ArrayList<>();
+    public static ArrayList<Servicio> lsitaServicios = new ArrayList<>();
 
     public static void main(String[] args) {
-        //BBDD
-        ArrayList<Cliente> listaClientes = new ArrayList<>();
-        ArrayList<Factura> listaFacaturas = new ArrayList<>();
-        ArrayList<Producto> listaProductos = new ArrayList<>();
-        ArrayList<Servicio> lsitaServicios = new ArrayList<>();
-        //VARIABLES
-        int opcion =0;
-        String dato;
+
+
         //MENU
         do {
 
@@ -30,83 +34,103 @@ public class Main {
             System.out.println("10. borrar facatura ");
             System.out.println("               0. salir");
 
-            Scanner scnTeclado = new Scanner(System.in);
+            scnTeclado = new Scanner(System.in);
             opcion = scnTeclado.nextInt();
 
-            switch (opcion){
+            switch (opcion) {
                 case 1: {
-                    for(int i=0 ; listaClientes.size();i++){
-                        System.out.println(listaClientes.toString());
-                    }
-                }break;
-                case 2:{
+                    listarClientes();
+                    break;
+                }
 
-                }break;
-                case 3:{
+                case 2: {
+                    break;
+                }
 
-                }break;
-                case 4:{
-                    System.out.println("Datos de cliente:");
-                    System.out.println("---------------------------------------");
-                    System.out.print("1. Autonomo   ");
-                    System.out.println("2. Sociedad");
+                case 3: {
+                    break;
+                }
 
-                    scnTeclado = new Scanner(System.in);
-                    opcion = scnTeclado.nextInt();
+                case 4: {
 
-                    switch (opcion){
-                        case 1:{
-                            listaClientes.add(leerAutonomo());
-                            scnTeclado = new Scanner(System.in);
-                            dato = scnTeclado.nextLine();
-                            listaClientes.add(leerAutonomo());
-                        }
-                        case 2:{
-                            listaClientes.add(leerSociedad());
-                            scnTeclado = new Scanner(System.in);
-                            dato = scnTeclado.nextLine();
-                            listaClientes.add(leerSociedad());
-                        }
-                    }
-                }break;
-                case 5:{
-                    System.out.println("Cliente a borrar:");
-                    System.out.println("---------------------------------------");
-                    do {
-                        int contador =0;
-                        System.out.print(listaClientes.get(contador));
-                        System.out.print(listaClientes.get(leerAutonomo().getCodgioCliente()));
-                        System.out.print(listaClientes.get(leerAutonomo().getCodgioCliente()));
-                        contador++;
-                    }while (listaClientes<listaClientes.size());
+                    break;
+                }
 
-                    }
-
-                    scnTeclado = new Scanner(System.in);
-                    dato = scnTeclado.nextLine();
-                    if (posicion >= 0 && posicion < listaClientes.size() ){
-                        listaClientes.remove(dato);
-                    }else
-
-
-
-
-                }break;
-
+                case 5: {
+                    borrarCliente();
+                    break;
+                }
+                case 6: {
+                    crearCliente();
+                    break;
+                }
             }
-        }while (opcion!=0);
+        } while (opcion != 0);
     }
+    //Methods
+    public static void crearCliente() {
+        System.out.println("Datos de cliente:");
+        System.out.println("---------------------------------------");
+        System.out.print("1. Autonomo   ");
+        System.out.println("2. Sociedad");
 
+        scnTeclado = new Scanner(System.in);
 
-    public static Cliente leerAutonomo(){
+        opcion = scnTeclado.nextInt();
+
+        switch (opcion) {
+            case 1: {
+                listaClientes.add(leerAutonomo());
+                break;
+            }
+            case 2: {
+                listaClientes.add(leerSociedad());
+                break;
+            }
+        }
+    }
+    public static void borrarCliente() {
+        System.out.println("seleccione cliente a borrar:");
+        System.out.println("---------------------------------------");
+        for (int contador = 1; contador <= listaClientes.size(); contador++) {
+            System.out.print(contador + ". ");
+            if (listaClientes.get(contador-1).esAutonomo) {
+                Autonomo t = (Autonomo) listaClientes.get(contador-1);
+                System.out.println(t.getNombre());
+            } else {
+                Sociedad t = (Sociedad) listaClientes.get(contador-1);
+                System.out.println(t.getRazonSocial());
+            }
+        }
+        System.out.println("0. Salir");
+        System.out.println("Cliente a borrar:");
+        scnTeclado = new Scanner(System.in);
+        posicion = scnTeclado.nextInt();
+        if (posicion==0){
+            System.out.println("borrado anulado");
+        }else if (posicion > 0 && posicion < listaClientes.size()) {
+            listaClientes.remove(posicion-1);
+            System.out.println("Cliente borrado");
+        }
+
+    }
+    public static void listarClientes() {
+        System.out.println("Listado de clientes: ");
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < listaClientes.size(); i++) {
+            System.out.println(listaClientes.get(i).toString());
+        }
+    }
+    public static Cliente leerAutonomo() {
         Autonomo autonomoNuevo = new Autonomo();
-        System.out.println("nombre:");
-        String dato = scnTeclado.nextLine();
-        autonomoNuevo.setNombre(dato);
 
-        System.out.println("Apellidos:");
+        autonomoNuevo.setCodigocliente(++codigoCliente);
+        autonomoNuevo.esAutonomo=true;
+
+        String dato = scnTeclado.nextLine();
+        System.out.println("nombre:");
         dato = scnTeclado.nextLine();
-        autonomoNuevo.setApellidos(dato);
+        autonomoNuevo.setNombre(dato);
 
         System.out.println("Apellidos:");
         dato = scnTeclado.nextLine();
@@ -135,14 +159,18 @@ public class Main {
         System.out.println("Telefono:");
         dato = scnTeclado.nextLine();
         autonomoNuevo.setTelefono(dato);
-
         return autonomoNuevo;
     }
 
-    public static Cliente leerSociedad(){
+    public static Cliente leerSociedad() {
         Sociedad sociedadNueva = new Sociedad();
-        System.out.println("Razon social:");
+
+        sociedadNueva.setCodigocliente(++codigoCliente);
+        sociedadNueva.esAutonomo=false;
+
         String dato = scnTeclado.nextLine();
+        System.out.println("Razon social:");
+        dato = scnTeclado.nextLine();
         sociedadNueva.setRazonSocial(dato);
 
         System.out.println("Cif:");
@@ -161,7 +189,7 @@ public class Main {
         dato = scnTeclado.nextLine();
         sociedadNueva.setProvincia(dato);
 
-        System.out.println("Emamil:");
+        System.out.println("email:");
         dato = scnTeclado.nextLine();
         sociedadNueva.setEmail(dato);
 
@@ -169,8 +197,5 @@ public class Main {
         dato = scnTeclado.nextLine();
         sociedadNueva.setTelefono(dato);
         return sociedadNueva;
-    }
-    public static Cliente borrarCliente(){
-
     }
 }
