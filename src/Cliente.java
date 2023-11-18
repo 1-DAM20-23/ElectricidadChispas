@@ -1,5 +1,5 @@
 public class Cliente {
-     protected Integer codgioCliente;
+    protected Integer codgioCliente;
     protected String direccionPostal;
     protected String poblacion;
     protected String provincia;
