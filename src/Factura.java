@@ -4,9 +4,9 @@ import java.util.Date;
 public class Factura {
     private Integer codigoFactura;
     private Date fechaFactura;
-    private ArrayList<Producto[]> productos;
-    private ArrayList<Servicio[]> servicios;
-    private Cliente cliente;
+    private ArrayList<Integer[]> productos;
+    private ArrayList<Integer[]> servicios;
+    private Integer cliente;
 
 
 

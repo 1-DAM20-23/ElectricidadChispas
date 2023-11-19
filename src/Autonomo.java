@@ -3,7 +3,9 @@ public class Autonomo extends Cliente {
     private String apellidos;
     private String dni;
 
-
+    public void Autonomo() {
+    esAutonomo=true;
+    }
 
     public String getNombre() {
         return nombre;
