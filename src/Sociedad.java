@@ -2,13 +2,16 @@ public class Sociedad extends Cliente{
     private String razonSocial;
     private String cif;
 
+    public  void Sociedad(){
+        esAutonomo=false;
+    }
+
     @Override
     public String toString() {
         return "Sociedad{" +
-                "codgioCliente=" + codgioCliente +
+                "codigocliente=" + codigocliente +
                 ", razonSocial='" + razonSocial + '\'' +
                 ", cif='" + cif + '\'' +
-                ", codgioCliente=" + codgioCliente +
                 ", direccionPostal='" + direccionPostal + '\'' +
                 ", poblacion='" + poblacion + '\'' +
                 ", provincia='" + provincia + '\'' +

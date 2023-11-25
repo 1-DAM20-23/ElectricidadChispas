@@ -1,13 +1,14 @@
 public class Cliente {
-     protected Integer codgioCliente;
+    protected Integer codigocliente;
     protected String direccionPostal;
     protected String poblacion;
     protected String provincia;
+    public Boolean esAutonomo;
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "codgioCliente=" + codgioCliente +
+                "codigocliente=" + codigocliente +
                 ", direccionPostal='" + direccionPostal + '\'' +
                 ", poblacion='" + poblacion + '\'' +
                 ", provincia='" + provincia + '\'' +
@@ -21,13 +22,12 @@ public class Cliente {
 
 
 
-
-    public Integer getCodgioCliente() {
-        return codgioCliente;
+    public Integer getCodigocliente() {
+        return codigocliente;
     }
 
-    public void setCodgioCliente(Integer codgioCliente) {
-        this.codgioCliente = codgioCliente;
+    public void setCodigocliente(Integer codigocliente) {
+        this.codigocliente = codigocliente;
     }
 
     public String getDireccionPostal() {

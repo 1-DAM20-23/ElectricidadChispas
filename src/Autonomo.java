@@ -3,7 +3,9 @@ public class Autonomo extends Cliente {
     private String apellidos;
     private String dni;
 
-
+    public void Autonomo() {
+    esAutonomo=true;
+    }
 
     public String getNombre() {
         return nombre;
@@ -32,11 +34,10 @@ public class Autonomo extends Cliente {
     @Override
     public String toString() {
         return "Autonomo{" +
-                "codgioCliente=" + codgioCliente +
+                "codigocliente=" + codigocliente +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", dni='" + dni + '\'' +
-                ", codgioCliente=" + codgioCliente +
                 ", direccionPostal='" + direccionPostal + '\'' +
                 ", poblacion='" + poblacion + '\'' +
                 ", provincia='" + provincia + '\'' +
